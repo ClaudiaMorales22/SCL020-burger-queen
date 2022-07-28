@@ -1,48 +1,31 @@
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 
-function MenuList({ MenuData, creatingOrder }) {
+function MenuList({ }) {
     // console.log(props);
     const [selectedDish, setSelectedDish] = useState("tablas");
-  
-    const onSelectedDish = (e) => {
-      setSelectedDish(e.target.dataset.id);
-    };
-    
+   
   
     return (
         <>
       <div className="container-menu">
         <div className="menuButtons">
-          <button className="tableButton" data-id="tablas" onClick={onSelectedDish}>
+          <button className="tableButton" onClick={setSelectedDish}>
             Tablas
           </button>
-          <button className="tableButton" data-id="tablasVeg" onClick={onSelectedDish}>
+          <button className="tableButton" onClick={setSelectedDish}>
             Tablas Veg
           </button>
-          <button className="tableButton" data-id="bebestibles" onClick={onSelectedDish}>
+          <button className="tableButton" onClick={setSelectedDish}>
             Bebestibles
           </button>
-          <button className="tableButton" data-id="postres" onClick={onSelectedDish}>
+          <button className="tableButton" onClick={setSelectedDish}>
             Postres
           </button>
         </div>
-        <div>
-            
-          {MenuData[selectedDish].map((element) => {
-            return (
-            
-              <MenuItem
-                key={`${element.name}`}
-                name={element.name}
-                price={element.price}
-                id={element.id}
-                creatingOrder={creatingOrder}
-                
-              />
-            );
-          })}
-        </div>
+      </div>
+      <div>
+       
       </div>
       
       </>

@@ -12,7 +12,7 @@ import { OrderProvider } from './context/OrderContext.js';
 //COMPONENTE FUNCIONAL
 function App() {
   return (
-    <OrderProvider>
+<OrderProvider>
 <Routes>
  
         <Route path="" element={<Home/>}></Route>
