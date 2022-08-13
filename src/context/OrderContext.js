@@ -3,19 +3,8 @@ import { createContext, useEffect, useState } from "react";
 export const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
-    const [orderItems, setOrderItems] = useState(() => {
-        try {
-            const productsEnLocalStorage = localStorage.getItem('orderProducts');
-            return productsEnLocalStorage ? JSON.parse(productsEnLocalStorage) : [];
-        } catch (error) {
-            return [];
-        }
-        
-    });
 
-    useEffect(() => {
-        localStorage.setItem('orderProducts', JSON.stringify(orderItems));
-    }, [orderItems]);
+    const [orderItems, setOrderItems] = useState([])
 
     const addItemToOrder = (product) => {
         const inOrder = orderItems.find(
@@ -53,7 +42,7 @@ export const OrderProvider = ({ children }) => {
         };
 
         return (
-            <OrderContext.Provider value={{ orderItems, addItemToOrder, deleteItemInOrder }}>
+            <OrderContext.Provider value={{ orderItems, setOrderItems, addItemToOrder, deleteItemInOrder }}>
                 {children}
             </OrderContext.Provider>
         )
